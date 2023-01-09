@@ -4,7 +4,7 @@ const app = express();
 
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://stickman:shreyansh@stickman.jtwgqqr.mongodb.net/?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true });
+
 
 
 let token = 10000;
@@ -12,16 +12,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 
 
-
 app.get('/', (req, res)=>{
     res.sendFile(__dirname + "/login.html")
 })
 
-client.connect(err => {
-    const collection = client.db("test").collection("devices");
-    // perform actions on the collection object
-    client.close();
-  });
 
 
 app.post('/', function(req, res) {
