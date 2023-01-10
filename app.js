@@ -10,8 +10,9 @@ const app = express();
 const MongoClient = require('mongodb').MongoClient;
 let token = 10000;
 app.use(bodyParser.urlencoded({ extended: false }));
-const uri = "mongodb+srv://stickman:shreyansh@stickman.jtwgqqr.mongodb.net/?retryWrites=true&w=majority";
+const uri = process.env.MONGO_URL;
 
+  
 
 
 
