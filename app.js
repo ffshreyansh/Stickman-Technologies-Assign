@@ -10,7 +10,7 @@ const app = express();
 const MongoClient = require('mongodb').MongoClient;
 let token = 10000;
 app.use(bodyParser.urlencoded({ extended: false }));
-const uri = process.env.MONGO_URL ||" mongodb+srv://stickman:shreyansh@stickman.jtwgqqr.mongodb.net/?retryWrites=true&w=majority"
+const uri = process.env.MONGO_URL ||"mongodb+srv://stickman:shreyansh@stickman.jtwgqqr.mongodb.net/?retryWrites=true&w=majority"
 
 
 
@@ -210,9 +210,9 @@ app.post('/', function (req, res) {
 
 
 
-    app.get('/success', (req, res) => {
-        res.sendFile(__dirname + '/success.html');
-    });
+    // app.get('/success', (req, res) => {
+    //     res.sendFile(__dirname + '/success.html');
+    // });
 
 
     // app.get('/', (req, res) => {
