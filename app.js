@@ -73,9 +73,10 @@ app.use('/users', require("./routes/users.js"));
 MongoClient.connect(uri, { useNewUrlParser: true }, function (err, client) {
     if (err) {
         console.log('Error occurred while connecting to MongoDB Atlas...\n', err);
-    }
-    console.log('Connected...');
-    const db = client.db('stickman');
+    }else if(typeof client !== 'undefined') {
+      console.log('Connected...');
+      const db = client.db('stickman');
+
 
     app.post('/', function (req, res) {
 
@@ -109,6 +110,9 @@ MongoClient.connect(uri, { useNewUrlParser: true }, function (err, client) {
         });
 
     });
+  }else {
+    console.log("client object is not defined")
+  }
         //Using Puppeteer to Generate Name Filtered PDF=====================================
 
         app.post('/pdf/filtered', async (req, res) => {
