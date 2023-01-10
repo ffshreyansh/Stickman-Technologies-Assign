@@ -10,9 +10,8 @@ const app = express();
 const MongoClient = require('mongodb').MongoClient;
 let token = 10000;
 app.use(bodyParser.urlencoded({ extended: false }));
-const uri = process.env.MONGO_URL;
+const uri = process.env.MONGO_URL ||"mongodb+srv://stickman:shreyansh@stickman.jtwgqqr.mongodb.net/?retryWrites=true&w=majority";
 
-  
 
 
 
@@ -31,7 +30,7 @@ const db = require('./config/keys').mongoURI
 
 //Connect to mongo
 mongoose.connect(db, {useNewUrlParser: true})
-    .then(() => console.log("MongoDB connected.."))
+    .then(() => console.log("MongoDB mogoose connected.."))
     .catch(err => console.log(err));
     
 //EJS
