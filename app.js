@@ -4,13 +4,15 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
+
 const bodyParser = require("body-parser");
 const { default: puppeteer } = require("puppeteer");
+const dotenv = require("dotenv").config();
 const app = express();
 const MongoClient = require('mongodb').MongoClient;
 let token = 10000;
 app.use(bodyParser.urlencoded({ extended: false }));
-const uri = process.env.MONGO_URL ||"mongodb+srv://stickman:shreyansh@stickman.jtwgqqr.mongodb.net/?retryWrites=true&w=majority"
+// const uri = process.env.MONGO_URL ||"mongodb+srv://stickman:shreyansh@stickman.jtwgqqr.mongodb.net/?retryWrites=true&w=majority"
 
 
 
@@ -19,7 +21,7 @@ const uri = process.env.MONGO_URL ||"mongodb+srv://stickman:shreyansh@stickman.j
 require("./config/passport")(passport);
 
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 app.use(express.static("public"));
 
 mongoose.set("strictQuery", false);
@@ -29,7 +31,11 @@ mongoose.set("strictQuery", false);
 const db = require('./config/keys').mongoURI
 
 //Connect to mongo
-mongoose.connect(db, {useNewUrlParser: true})
+mongoose.connect(db, {
+  useNewUrlParser: true,
+  // user: process.env.DB_USER,
+  // pass: process.env.DB_PASS
+})
     .then(() => console.log("MongoDB mogoose connected.."))
     .catch(err => console.log(err));
     
